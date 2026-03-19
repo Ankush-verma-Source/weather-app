@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Wind, Droplets, Thermometer, CloudRain, Sun, Cloud, ThermometerSun } from 'lucide-react';
 
-const BACKEND_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const BACKEND_URL = import.meta.env.VITE_API_BASE_URL || "";
 const WEATHER_API_URL = `${BACKEND_URL}/api/weather`;
 const FORECAST_URL = `${BACKEND_URL}/api/forecast`;
 
