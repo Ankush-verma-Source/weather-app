@@ -23,7 +23,7 @@ Returns a 5-day / 3-hour forecast for the specified city.
    Create a `.env` file:
    ```env
    PORT=5000
-   WEATHER_API_KEY=a9ccc157246df1a15f159b1201ac81e1
+   WEATHER_API_KEY=your_api_key_here
    WEATHER_API_URL=https://api.openweathermap.org/data/2.5/weather
    ```
 
