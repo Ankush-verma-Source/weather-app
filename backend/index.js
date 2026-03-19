@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -60,16 +61,22 @@ app.get('/api/forecast', async (req, res) => {
   }
 });
 
-// Serve frontend static files in production
+// Serve frontend static files only if they exist (Unified Deployment)
 const frontendPath = path.join(__dirname, '../frontend/dist');
-app.use(express.static(frontendPath));
-
-// Fallback to index.html for SPA routing
-// Using app.use() without a path at the end to catch-all 
-// This avoids Express 5 path-to-regexp syntax issues
-app.use((req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
+if (fs.existsSync(frontendPath)) {
+  app.use(express.static(frontendPath));
+  
+  // SPA Fallback
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+} else {
+  // Default response for standalone API (Split Deployment)
+  app.get('/', (req, res) => {
+    res.json({ message: 'Weather App API is running', endpoints: ['/api/weather', '/api/forecast'] });
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -2,7 +2,7 @@
 
 A premium, full-stack weather forecasting dashboard featuring a stunning React frontend and a robust Node.js/Express backend. This project is built with production-readiness in mind, offering a unified architecture that is easy to deploy and scale.
 
-![Weather App Screenshot](https://raw.githubusercontent.com/username/repo/main/screenshot.png) *(Placeholder: Replace with your actual screenshot)*
+![Weather App Screenshot](./screenshot.png)
 
 ## 🚀 Key Features
 

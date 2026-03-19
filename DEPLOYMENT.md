@@ -42,11 +42,10 @@ This guide explains how to deploy the frontend to **Vercel** and the backend to 
 - [ ] **HTTPS**: Ensure the `VITE_API_BASE_URL` starts with `https://`.
 - [ ] **Build Check**: Ensure you have run `npm run build` once locally to confirm there are no errors.
 
----
+## 💡 Troubleshooting
 
-## 🛠️ Local Testing Tip
-To test the split setup locally:
-1. Start Backend: `cd backend && npm start`
-2. Start Frontend with env var: 
-   - Windows: `$env:VITE_API_BASE_URL="http://localhost:5000"; npm run dev`
-   - Mac/Linux: `VITE_API_BASE_URL=http://localhost:5000 npm run dev`
+### Backend "ENOENT" Error on Render
+If you see an error about `frontend/dist/index.html` missing, don't worry! I have updated the code to handle this. The backend will now detect if it's being deployed as a standalone API (Split Deployment) and will skip serving the frontend files.
+
+### CORS Errors
+If Vercel cannot reach Render, check that your `VITE_API_BASE_URL` in Vercel is set to the **full https URL** of your Render service.
