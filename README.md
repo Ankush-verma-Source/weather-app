@@ -1,4 +1,4 @@
-# 🌤️ Weather App Unified Project (Full-Stack)
+# 🌤️ Weather App Project (Full-Stack)
 
 A premium, full-stack weather forecasting dashboard featuring a stunning React frontend and a robust Node.js/Express backend. This project is built with production-readiness in mind, offering a unified architecture that is easy to deploy and scale.
 
