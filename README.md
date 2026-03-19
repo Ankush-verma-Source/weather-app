@@ -1,6 +1,6 @@
-# 🌤️ Weather App Project (Full-Stack)
+# 🌤️ My Weather App
 
-A premium, full-stack weather forecasting dashboard featuring a stunning React frontend and a robust Node.js/Express backend. This project is built with production-readiness in mind, offering a unified architecture that is easy to deploy and scale.
+A modern full-stack weather dashboard built with React and Node.js. It features a sleek glassmorphism design, real-time weather updates, and a 5-day forecast.
 
 ![Weather App Screenshot](./screenshot.png)
 

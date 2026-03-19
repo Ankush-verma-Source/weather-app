@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Proxy endpoint for weather data
+// Weather API proxy
 app.get('/api/weather', async (req, res) => {
   const { city } = req.query;
   
@@ -36,7 +36,7 @@ app.get('/api/weather', async (req, res) => {
   }
 });
 
-// Proxy endpoint for forecast data
+// Forecast API proxy
 app.get('/api/forecast', async (req, res) => {
   const { city } = req.query;
   
@@ -61,7 +61,7 @@ app.get('/api/forecast', async (req, res) => {
   }
 });
 
-// Serve frontend static files only if they exist (Unified Deployment)
+// Serve frontend if it exists
 const frontendPath = path.join(__dirname, '../frontend/dist');
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath));
@@ -72,7 +72,7 @@ if (fs.existsSync(frontendPath)) {
     res.sendFile(path.join(frontendPath, 'index.html'));
   });
 } else {
-  // Default response for standalone API (Split Deployment)
+  // Simple welcome for API only
   app.get('/', (req, res) => {
     res.json({ message: 'Weather App API is running', endpoints: ['/api/weather', '/api/forecast'] });
   });
