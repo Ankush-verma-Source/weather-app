@@ -6,7 +6,7 @@ const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5005;
 
 app.use(cors());
 app.use(express.json());
@@ -14,16 +14,19 @@ app.use(express.json());
 // Weather API proxy
 app.get('/api/weather', async (req, res) => {
   const { city } = req.query;
-  
+
   if (!city) {
     return res.status(400).json({ error: 'City is required' });
   }
 
+  const apiUrl = process.env.WEATHER_API_URL || "https://api.openweathermap.org/data/2.5/weather";
+  const apiKey = (process.env.WEATHER_API_KEY || "").trim();
+
   try {
-    const response = await axios.get(process.env.WEATHER_API_URL, {
+    const response = await axios.get(apiUrl, {
       params: {
         q: city,
-        appid: process.env.WEATHER_API_KEY,
+        appid: apiKey,
         units: 'metric'
       }
     });
@@ -39,16 +42,19 @@ app.get('/api/weather', async (req, res) => {
 // Forecast API proxy
 app.get('/api/forecast', async (req, res) => {
   const { city } = req.query;
-  
+
   if (!city) {
     return res.status(400).json({ error: 'City is required' });
   }
 
+  const apiUrl = (process.env.WEATHER_API_URL || "https://api.openweathermap.org/data/2.5/weather").replace('/weather', '/forecast');
+  const apiKey = (process.env.WEATHER_API_KEY || "").trim();
+
   try {
-    const response = await axios.get(process.env.WEATHER_API_URL.replace('/weather', '/forecast'), {
+    const response = await axios.get(apiUrl, {
       params: {
         q: city,
-        appid: process.env.WEATHER_API_KEY,
+        appid: apiKey,
         units: 'metric'
       }
     });
@@ -65,7 +71,7 @@ app.get('/api/forecast', async (req, res) => {
 const frontendPath = path.join(__dirname, '../frontend/dist');
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath));
-  
+
   // SPA Fallback
   app.use((req, res, next) => {
     if (req.path.startsWith('/api')) return next();
