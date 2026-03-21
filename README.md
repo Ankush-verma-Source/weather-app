@@ -84,6 +84,26 @@ Your app will now be live on `http://localhost:5000` (serving both the API and t
 
 ---
 
+## 💻 Local Development Setup (For Reviewers)
+
+To run this project locally in development mode (with hot-module reloading and the Vite proxy):
+
+### 1. Backend Setup
+1. CD into the backend directory: `cd backend`
+2. Install dependencies: `npm install`
+3. Copy the example environment file: `cp .env.example .env` (or manually rename it)
+4. Add your OpenWeatherMap API key to `.env`
+5. Start the backend server: `npm run dev` (or `node index.js`). It will run on `http://localhost:5005`.
+
+### 2. Frontend Setup
+1. Open a **new terminal window** and CD into the frontend directory: `cd frontend`
+2. Install dependencies: `npm install`
+3. *(Optional)* Copy `.env.example` to `.env`. For local development, the Vite proxy in `vite.config.js` will automatically route `/api` requests to `http://localhost:5005`, so you don't need to configure `VITE_API_BASE_URL` locally.
+4. Start the Vite dev server: `npm run dev`
+5. Visit the Localhost URL provided in the terminal to view the app!
+
+---
+
 ## 🎨 Design Philosophy
 
 The project follows a **"Premium-First"** approach:
@@ -93,5 +113,3 @@ The project follows a **"Premium-First"** approach:
 - **Icons**: Large, atmospheric icons that change with the weather status.
 
 ---
-
-

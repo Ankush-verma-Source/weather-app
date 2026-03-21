@@ -33,7 +33,12 @@ body {
 }
 
 /* Maintain dark theme across all weather types */
-body.sunny, body.cloudy, body.rainy, body.snowy, body.stormy, body.default {
+body.sunny,
+body.cloudy,
+body.rainy,
+body.snowy,
+body.stormy,
+body.default {
   background: var(--bg-gradient);
 }
 
@@ -225,11 +230,11 @@ body.sunny, body.cloudy, body.rainy, body.snowy, body.stormy, body.default {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .temperature {
     font-size: 4rem;
   }
-  
+
   .details-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -239,15 +244,15 @@ body.sunny, body.cloudy, body.rainy, body.snowy, body.stormy, body.default {
   #root {
     padding: 1rem;
   }
-  
+
   .glass-card {
     padding: 1.5rem;
   }
-  
+
   .search-container {
     flex-direction: column;
   }
-  
+
   .details-grid {
     grid-template-columns: 1fr;
   }
@@ -255,8 +260,15 @@ body.sunny, body.cloudy, body.rainy, body.snowy, body.stormy, body.default {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
